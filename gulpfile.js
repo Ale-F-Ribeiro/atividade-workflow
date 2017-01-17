@@ -10,14 +10,14 @@ gulp.task("move-css", function(){
 
 
 
-gulp.task("assiste", function(){
-	gulp.watch("./source/scss/*.scss",["mover-css"])
-	gulp.watch("./source/*.html",["minify"]);
-});
-
-
-gulp.task('minifica', function() {
+gulp.task('minifica-html', function() {
   return gulp.src('./source/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./dist/'));
+});
+
+
+gulp.task("assiste", function(){
+	gulp.watch("./source/scss/*.scss",["move-css"])
+	gulp.watch("./source/*.html",["minifica-html"]);
 });
